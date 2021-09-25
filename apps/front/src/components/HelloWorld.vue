@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <MainLogo></MainLogo>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -8,7 +9,7 @@
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <TextLink></TextLink>
+      <TextLink :link="link"></TextLink>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
@@ -36,12 +37,27 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import TextLink from './atoms/TextLink.vue'
+import TextLink, { Link } from './atoms/TextLink.vue'
+import MainLogo from './atoms/MainLogo.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    TextLink
+    TextLink,
+    MainLogo
+  },
+  data () {
+    return {
+      myLink: {
+        url: 'https://www.example.com',
+        text: 'My Text'
+      } as Link
+    }
+  },
+  computed: {
+    link (): Link {
+      return this.myLink
+    }
   }
 })
 </script>
