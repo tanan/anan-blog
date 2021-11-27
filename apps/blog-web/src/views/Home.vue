@@ -40,7 +40,7 @@ export default {
  },
  methods: {
    getArticleUrl (id) {
-     return "/articles/" + id
+     return "/article/" + id
    },
    getShows: async () => {
      const query = `{
