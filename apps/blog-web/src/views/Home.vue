@@ -2,17 +2,23 @@
   <div class="home">
     <MainLogo />
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <div class="card-list wrapper">
-      <div class="cards-container">
-        <div v-for="show in shows" :key="show.title">
-          <a :href="getArticleUrl(show.sys.id)">
+    <div class="home-container">
+      <div class="article-section">
+        <h2>新着記事</h2>
+        <div class="card-list-container">
+          <div v-for="show in shows" :key="show.title">
             <div class="card">
-              <img class="thumbnail" :src="show.thumbnail.url">
-              <div class="title">{{ show.title }}</div>
-              <div class="description">{{ show.description }}</div>
+              <a :href="getArticleUrl(show.sys.id)">
+                <img class="thumbnail" :src="show.thumbnail.url">
+                <div class="title">{{ show.title }}</div>
+                <div class="description">{{ show.description }}</div>
+              </a>
             </div>
-          </a>
+          </div>
         </div>
+      </div>
+      <div class="category-section">
+        <h2>記事カテゴリー</h2>
       </div>
     </div>
   </div>
@@ -87,13 +93,29 @@ export default {
 
 <style lang="scss">
 @import "../styles/_variables.scss";
+  .home-container {
+    display: flex;
+  }
+  .article-section {
+    width: 56%;
+    margin-left: 8%;
+  }
+  .category-section {
+    width: 30%;
+    margin-right: 8px;
+  }
+  .card-list-container {
+    // background-color: #dfdfdf;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 12px;
+  }
   .card {
 
   width: 256px;
   height: 320px;
   box-shadow: 0 4px 8px 0 rgba(40, 40, 40, 0.2);
   margin: 32px 32px;
-  margin-left: 0px;
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
