@@ -22,6 +22,7 @@ export default {
    console.log(item.content.json)
    this.article = {
      title: item.title,
+     thumbnail: item.thumbnail.url,
      description: item.description,
      content: documentToHtmlString(item.content.json)
    }
