@@ -1,22 +1,30 @@
 <template>
-  <div class="article">
-    <h1>{{ item.title }}</h1>
-    <p>{{ item.description }}</p>
-    <p>{{ item.content }}</p>
+  <div class="article-page">
+    <ArticleText :article="article" />
   </div>
 </template>
 
 <script>
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import ArticleText from '@/components/organisms/ArticleText.vue'
 export default {
   name: 'Article',
+  components: {
+    ArticleText
+  },
   data() {
     return {
-      item: {}
+      article: {}
     }
   },
   async created() {
-   this.item = await this.getArticle(this.$route.params.id);
-   console.log(this.item)
+   let item = await this.getArticle(this.$route.params.id);
+   console.log(item.content.json)
+   this.article = {
+     title: item.title,
+     description: item.description,
+     content: documentToHtmlString(item.content.json)
+   }
  },
   methods: {
     getArticle: async (id) => {

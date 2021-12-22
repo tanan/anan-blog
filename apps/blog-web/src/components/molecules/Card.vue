@@ -1,11 +1,11 @@
 <template>
-<div class="card">
-  <a :href="getArticleUrl(show.sys.id)">
-    <img class="thumbnail" :src="show.thumbnail.url">
-    <div class="title">{{ show.title }}</div>
-    <div class="description">{{ show.description }}</div>
-  </a>
-</div>
+  <div class="card">
+    <a :href="getArticleUrl(show.sys.id)">
+      <img class="thumbnail" :src="show.thumbnail.url">
+      <div class="title">{{ show.title }}</div>
+      <div class="description">{{ show.description }}</div>
+    </a>
+  </div>
 </template>
 
 <script>
