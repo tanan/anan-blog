@@ -2,8 +2,10 @@
   <div class="card">
     <a :href="getArticleUrl(show.sys.id)">
       <img class="thumbnail" :src="show.thumbnail.url">
-      <div class="title">{{ show.title }}</div>
-      <div class="description">{{ show.description }}</div>
+      <div class="card-container">
+        <div class="title">{{ show.title }}</div>
+        <div class="description">{{ show.description }}</div>
+      </div>
     </a>
   </div>
 </template>
@@ -34,6 +36,10 @@ export default {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
     }
+
+    a {
+      text-decoration: none;
+    }
     
     .thumbnail {
       width: 100%;
@@ -53,7 +59,12 @@ export default {
 
       .title {
         font-size: 16px;
+        font-weight: 600;
         margin-bottom: 8px;
+      }
+
+      .description {
+        font-size: 14px;
       }
 
       .editor {
@@ -83,11 +94,6 @@ export default {
           max-height: 32px;
           margin-right: 8px;
         }
-      }
-
-      .description {
-        margin-top: 8px;
-        font-size: 14px;
       }
     }
   }
