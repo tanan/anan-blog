@@ -36,6 +36,7 @@ export default {
     .thumbnail {
       width: 640px;
       height: 360px;
+      margin-top: 24px;
     }
 
     ul {

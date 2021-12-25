@@ -9,11 +9,12 @@
 <style scoped lang="scss">
 .logo {
   display: block;
-  font-size: 30px;
   text-decoration: none;
   color: white;
 
   .logo-text {
+    font-size: 26px;
+    font-weight: 600;
     padding-top: 12px;
     padding-left: 36px;
   }
