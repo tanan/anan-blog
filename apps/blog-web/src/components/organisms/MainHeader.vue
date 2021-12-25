@@ -1,19 +1,20 @@
 <template>
   <div class="header">
-    <MainLogo />
+    <div class="top"><MainLogo /></div>
+    <div class="content"><HeaderContent /></div>
   </div>    
 </template>
 
 <script>
 import MainLogo from '@/components/atoms/MainLogo.vue'
-// import HeaderContent from '@/components/molecues/HeaderContent.vue'
-// import AccountInfo from '@/components/molecues/AccountInfo.vue'
+import HeaderContent from '@/components/molecules/HeaderContent.vue'
+// import AccountInfo from '@/components/molecules/AccountInfo.vue'
 
 export default {
   name: 'MainHeader',
   components: {
     MainLogo,
-    // HeaderContent,
+    HeaderContent,
     // AccountInfo
   }
 }
@@ -24,5 +25,13 @@ export default {
 .header {
   height: 96px;
   background-color: green;
+
+  .top {
+    height: 48px;
+  }
+
+  .content {
+    height: 48px;
+  }
 }
 </style>
