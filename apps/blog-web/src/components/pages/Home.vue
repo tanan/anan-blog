@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="main-logo"><MainLogo /></div>
+    <MainHeader />
     <div class="home-container">
       <ArticleList />
       <Category />
@@ -10,14 +10,14 @@
 
 <script>
 // @ is an alias to /src
-import MainLogo from '@/components/atoms/MainLogo.vue'
+import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleList from '@/components/organisms/ArticleList.vue'
 import Category from '@/components/organisms/Category.vue'
 
 export default {
   name: 'Home',
   components: {
-    MainLogo,
+    MainHeader,
     ArticleList,
     Category
   },
@@ -26,10 +26,6 @@ export default {
 
 <style lang="scss">
 @import "@/styles/_variables.scss";
-  .main-logo {
-    margin-top: 96px;
-    margin-bottom: 48px;
-  }
   .home-container {
     display: flex;
   }
