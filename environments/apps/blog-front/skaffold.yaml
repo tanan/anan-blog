@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta21
+kind: Config
+metadata:
+  name: blog-front
+build:
+  artifacts:
+  - image: blog-front
+    context: ../../../apps/blog-front
+    docker:
+      dockerfile: ./Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+profiles:
+- name: ci
+  build:
+    tagPolicy:
+      envTemplate:
+        template: '{{ .REVISION }}'
+    local:
+      push: false
+      useBuildkit: true
