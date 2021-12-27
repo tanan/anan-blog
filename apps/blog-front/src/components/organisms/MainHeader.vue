@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="top"><MainLogo /></div>
-    <div class="content"><HeaderContent /></div>
+    <div class="content"><HeaderContent :currentPage="currentPage" /></div>
   </div>    
 </template>
 
@@ -16,6 +16,11 @@ export default {
     MainLogo,
     HeaderContent,
     // AccountInfo
+  },
+  data() {
+    return {
+      currentPage: 'home'
+    }
   }
 }
 </script>
@@ -24,7 +29,7 @@ export default {
 @import "@/styles/_variables.scss";
 .header {
   height: 96px;
-  background-color: green;
+  background-color: #55c500;
 
   .top {
     height: 48px;
