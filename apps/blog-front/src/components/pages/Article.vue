@@ -8,6 +8,7 @@
 <script>
 import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleText from '@/components/organisms/ArticleText.vue'
+import { MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 export default {
   name: 'Article',
@@ -21,15 +22,20 @@ export default {
     }
   },
   async created() {
-   let item = await this.getArticle(this.$route.params.id);
-   console.log(item.content.json)
-   this.article = {
-     title: item.title,
-     thumbnail: item.thumbnail.url,
-     description: item.description,
-     content: documentToHtmlString(item.content.json)
-   }
- },
+    let item = await this.getArticle(this.$route.params.id);
+    console.log(item.content.json)
+    const options = {
+      renderMark: {
+        [MARKS.CODE]: text => `<pre>${text}</pre>`
+      }
+    }
+    this.article = {
+      title: item.title,
+      thumbnail: item.thumbnail.url,
+      description: item.description,
+      content: documentToHtmlString(item.content.json, options)
+    }
+  },
   methods: {
     getArticle: async (id) => {
       const query = `query {

@@ -40,11 +40,21 @@ export default {
     }
 
     ul {
-      margin-left: 12px;
       p {
         width: 80%;
         margin-right: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        line-height: 24px;
       }
+    }
+
+    pre {
+      line-height: 20px;
+      font-size: 14px;
+      background-color: whitesmoke;
+      padding: 16px;
+      white-space: pre-wrap;
     }
   }
 </style>
