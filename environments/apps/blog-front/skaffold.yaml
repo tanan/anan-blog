@@ -4,7 +4,7 @@ metadata:
   name: blog-front
 build:
   artifacts:
-  - image: blog-front
+  - image: asia-northeast1-docker.pkg.dev/anan-project/blog/front
     context: ../../../apps/blog-front
     docker:
       dockerfile: ./Dockerfile
@@ -18,5 +18,5 @@ profiles:
       envTemplate:
         template: '{{ .REVISION }}'
     local:
-      push: false
+      push: true
       useBuildkit: true
