@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="top"><MainLogo /></div>
-    <div class="content"><HeaderContent :currentPage="currentPage" /></div>
+    <div class="content"><HeaderContent :page="page" /></div>
   </div>    
 </template>
 
@@ -17,10 +17,11 @@ export default {
     HeaderContent,
     // AccountInfo
   },
-  data() {
-    return {
-      currentPage: 'home'
-    }
+  props: {
+    page: String
+  },
+  created() {
+    console.log("path" + this.$route.path)
   }
 }
 </script>

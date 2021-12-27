@@ -1,16 +1,6 @@
 <template>
-  <MainHeader />
   <router-view/>
 </template>
-
-<script>
-import MainHeader from '@/components/organisms/MainHeader.vue'
-export default {
-  components: {
-    MainHeader,
-  }
-}
-</script>
 
 <style lang="scss">
 #app {

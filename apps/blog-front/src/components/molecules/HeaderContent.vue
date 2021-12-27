@@ -1,8 +1,8 @@
 <template>
   <div class="content-list">
     <a class="home" v-bind:class="{ active: isHome }" href="#">ホーム</a>
-    <a class="about" v-bind:class="{ active: isAbout }" href="#">about</a>
-    <a class="profile" v-bind:class="{ active: isProfile }" href="#">profile</a>
+    <a class="about" v-bind:class="{ active: isAbout }" href="/article">about</a>
+    <a class="profile" v-bind:class="{ active: isProfile }" href="/profile">profile</a>
   </div>    
 </template>
 
@@ -10,15 +10,29 @@
 export default {
   name: 'HeaderContent',
   props: {
-    currentPage: String
+    page: String
   },
   data () {
     return {
-      isHome: true,
+      isHome: false,
       isAbout: false,
       isProfile: false
     }
-  }
+  },
+  created() {
+    switch(this.page) {
+      case 'home':
+        this.isHome = true
+        break
+      case 'article':
+        this.isAbout = true
+        break
+      case 'profile':
+        this.isProfile = true
+        break
+      default:
+    }
+  },
 }
 </script>
 

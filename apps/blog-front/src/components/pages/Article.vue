@@ -1,20 +1,23 @@
 <template>
   <div class="article-page">
+    <MainHeader page="article" />
     <ArticleText :article="article" />
   </div>
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleText from '@/components/organisms/ArticleText.vue'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 export default {
   name: 'Article',
   components: {
+    MainHeader,
     ArticleText
   },
   data() {
     return {
-      article: {}
+      article: {},
     }
   },
   async created() {
