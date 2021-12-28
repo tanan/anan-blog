@@ -32,6 +32,8 @@ export default {
           items {
             sys {
               id
+              publishedAt
+              firstPublishedAt
             }
             title
             description

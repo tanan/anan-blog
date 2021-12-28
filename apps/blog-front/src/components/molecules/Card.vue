@@ -4,6 +4,9 @@
       <img class="thumbnail" :src="show.thumbnail.url">
       <div class="card-container">
         <div class="title">{{ show.title }}</div>
+        <div class="date">
+          <p class="published-date">投稿日<time :datetime="show.sys.firstPublishedAt">{{ getDisplayDate(show.sys.firstPublishedAt) }}</time></p>
+        </div>
         <div class="description">{{ show.description }}</div>
       </div>
     </a>
@@ -19,6 +22,10 @@ export default {
   methods: {
     getArticleUrl (id) {
       return "/article/" + id
+    },
+    getDisplayDate (d) {
+      let date = new Date(d)
+      return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日"
     }
   }
 }
@@ -61,6 +68,21 @@ export default {
         font-size: 16px;
         font-weight: 600;
         margin-bottom: 8px;
+      }
+
+      .date {
+        display: flex;
+        color: #a8abb1;
+        font-size: 12px;
+
+        .published-date {
+          margin-top: 0px;
+          margin-bottom: 8px;
+        }
+
+        time {
+          margin-left: 4px;
+        }
       }
 
       .description {
