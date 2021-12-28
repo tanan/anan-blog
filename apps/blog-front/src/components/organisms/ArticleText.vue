@@ -2,6 +2,12 @@
   <div class="article">
     <img class="thumbnail" :src="article.thumbnail" alt="thumbnail">
     <h1>{{ article.title }}</h1>
+    <div class="author">
+      <div class="date">
+        <p class="published-date">投稿日<time :datetime="article.firstPublishedAt">{{ getDisplayDate(article.firstPublishedAt) }}</time></p>
+        <p class="updated-date">更新日<time :datetime="article.publishedAt">{{ getDisplayDate(article.firstPublishedAt) }}</time></p>
+      </div>
+    </div>
     <p>{{ article.description }}</p>
     <p v-html="article.content"></p>
   </div>
@@ -12,7 +18,13 @@ export default {
   name: 'ArticleText',
   props: {
     article: Object
-  }
+  },
+  methods: {
+    getDisplayDate (d) {
+      let date = new Date(d)
+      return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日"
+    }
+  },
 }
 </script>
 
@@ -26,6 +38,29 @@ export default {
 
     h1 {
       font-size: 32px;
+      margin-bottom: 4px;
+    }
+
+    .author {
+      font-size: 14px;
+
+      p {
+        line-height: 12px;
+        margin-top: 4px;
+      }
+
+      .date {
+        display: flex;
+        color: #a8abb1;
+
+        .updated-date {
+          margin-left: 16px;
+        }
+
+        time {
+          margin-left: 8px;
+        }
+      }
     }
 
     p {

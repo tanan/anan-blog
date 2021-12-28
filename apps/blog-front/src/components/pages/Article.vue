@@ -23,7 +23,7 @@ export default {
   },
   async created() {
     let item = await this.getArticle(this.$route.params.id);
-    console.log(item.content.json)
+    console.log(item)
     const options = {
       renderMark: {
         [MARKS.CODE]: text => `<pre>${text}</pre>`
@@ -32,6 +32,8 @@ export default {
     this.article = {
       title: item.title,
       thumbnail: item.thumbnail.url,
+      publishedAt: item.sys.publishedAt,
+      firstPublishedAt: item.sys.firstPublishedAt,
       description: item.description,
       content: documentToHtmlString(item.content.json, options)
     }
@@ -40,6 +42,11 @@ export default {
     getArticle: async (id) => {
       const query = `query {
         articles(id: "${id}") {
+          sys {
+            id
+            publishedAt
+            firstPublishedAt
+          }
           title
           description
           thumbnail {
