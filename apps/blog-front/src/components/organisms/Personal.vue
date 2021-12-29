@@ -17,14 +17,13 @@ export default {
 
 <style lang="scss">
   .personal {
-    width: 800px;
     margin-left: auto;
     margin-right: auto;
 
     .title {
       padding-top: 48px;
       text-align: center;
-      font-size: 28px;
+      font-size: 1.6em;
       font-weight: 600;
     }
   }

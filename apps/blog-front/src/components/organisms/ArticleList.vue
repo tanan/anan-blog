@@ -81,7 +81,7 @@ export default {
 <style lang="scss">
 @import "@/styles/_variables.scss";
   .article-section {
-    width: 58%;
+    width: 60%;
     margin-right: auto;
     margin-left: auto;
 

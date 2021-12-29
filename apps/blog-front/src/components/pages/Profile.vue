@@ -1,9 +1,11 @@
 <template>
   <div class="profile-page">
     <MainHeader page="profile" />
-    <Personal />
-    <Portfolio />
-    <Career />
+    <div class="profile">
+      <Personal />
+      <Portfolio />
+      <Career />
+    </div>
   </div>
 </template>
 
@@ -22,3 +24,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .profile {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

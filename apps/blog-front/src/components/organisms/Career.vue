@@ -81,7 +81,7 @@ export default {
 
 <style lang="scss">
   .career {
-    width: 800px;
+    // width: 800px;
     margin-left: auto;
     margin-right: auto;
 

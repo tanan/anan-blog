@@ -17,14 +17,11 @@ export default {
 
 <style lang="scss">
   .portfolio {
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 
     .title {
-      padding-top: 128px;
+      padding-top: 8%;
       text-align: center;
-      font-size: 28px;
+      font-size: 1.6em;
       font-weight: 600;
     }
   }

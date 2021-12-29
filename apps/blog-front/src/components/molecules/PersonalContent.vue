@@ -9,26 +9,30 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
   .personal-content {
     display: flex;
+    justify-content: center;
     margin-top: 24px;
     .icon {
-      padding-left: 16%;
+      width: 8%;
 
       img {
-        width: 96px;
-        height: 96px;
         border-radius: 50%;
+        width:100%;
+        max-width: 100%;
+        height: auto;
       }
     }
 
     .content {
-      padding-left: 48px;
+      padding-left: 2%;
+      padding-bottom: 1%;
+      padding-right: 2%;
       margin-top: auto;
+      font-size: 1.2em;
       
       .name {
-        font-size: 18px;
         font-weight: 600;
 
         .english {
@@ -38,6 +42,8 @@
 
       .link {
         padding-top: 4px;
+        padding-left: 2px;
+        font-size: 0.7em;
         font-weight: 500;
       }
     }

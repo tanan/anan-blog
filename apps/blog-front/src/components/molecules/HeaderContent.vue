@@ -36,11 +36,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .content-list {
     height: 48px;
     padding-left: 24px;
     display: flex;
+    flex-grow: 0;
     align-items: stretch;
     
     a {

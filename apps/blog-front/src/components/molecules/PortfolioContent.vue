@@ -24,8 +24,16 @@
     margin-top: 24px;
 
     .content {
-      padding-left: 48px;
       margin-top: auto;
+      display: flex;
+      justify-content: center;
+
+      ul {
+        li {
+          margin-right: auto;
+          margin-left: auto;
+        }
+      }
 
       .link {
         a {

@@ -27,7 +27,6 @@ export default {
 <style lang="scss">
   .career-content {
     margin-top: 48px;
-    // height: 100px;
     display: flex;
     
     .period {
