@@ -2,9 +2,7 @@
   <div class="article-section">
     <h2>新着記事</h2>
     <div class="card-list-container">
-      <div v-for="show in shows" :key="show.title">
-        <Card :show="show" />
-      </div>
+      <Card v-for="show in shows" :key="show.title" :show="show" />
     </div>
   </div>    
 </template>
@@ -20,6 +18,15 @@ export default {
     return {
       shows: []
     };
+  },
+  mounted() {
+    var div = document.getElementsByClassName("card-list-container")
+    var card = document.createElement("div")
+    card.setAttribute("class", "card empty")
+    div[0].appendChild(card)
+    var card2 = document.createElement("div")
+    card2.setAttribute("class", "card empty")
+    div[0].appendChild(card2)
   },
   async created() {
    this.shows = await this.getShows();
@@ -75,12 +82,25 @@ export default {
 @import "@/styles/_variables.scss";
   .article-section {
     width: 56%;
-    margin-left: 8%;
+    margin-right: auto;
+    margin-left: auto;
+
+    h2 {
+      font-size: 1.8em;
+      text-align: center;
+    }
   }
   .card-list-container {
-    // background-color: #dfdfdf;
     display: flex;
-    flex-wrap: wrap;
-    padding: 0 12px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    .empty {
+      height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 </style>

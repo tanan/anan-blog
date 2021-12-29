@@ -34,10 +34,11 @@ export default {
 <style lang="scss">
 @import "@/styles/_variables.scss";
   .card {
-    width: 256px;
-    height: 320px;
+    // flex: 0 -1 24%;
+    margin: 4%;
+    height: auto;
+    padding-bottom: 4%;
     box-shadow: 0 4px 8px 0 rgba(40, 40, 40, 0.2);
-    margin: 32px 32px;
 
     &:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -49,13 +50,13 @@ export default {
     }
     
     .thumbnail {
-      width: 100%;
+      width: 230px;
       height: 152px;
       border: 1px solid $color-border-gray;
     }
 
     img {
-      width: 100%;
+      max-width: 230px;
       max-height: 151px;
     }
 
@@ -87,6 +88,7 @@ export default {
 
       .description {
         font-size: 14px;
+        max-width: 200px;
       }
 
       .editor {
