@@ -1,7 +1,7 @@
 <template>
   <div class="content-list">
     <a class="home" v-bind:class="{ active: isHome }" href="/">ホーム</a>
-    <a class="about" v-bind:class="{ active: isAbout }" href="/article">about</a>
+    <!-- <a class="about" v-bind:class="{ active: isAbout }" href="/article">about</a> -->
     <a class="profile" v-bind:class="{ active: isProfile }" href="/profile">profile</a>
   </div>    
 </template>

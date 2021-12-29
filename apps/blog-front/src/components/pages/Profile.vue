@@ -27,7 +27,7 @@ export default {
 
 <style scoped lang="scss">
   .profile {
-    width: 70%;
+    width: 76%;
     margin-left: auto;
     margin-right: auto;
   }

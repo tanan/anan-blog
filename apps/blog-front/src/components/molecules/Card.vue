@@ -34,7 +34,7 @@ export default {
 <style lang="scss">
 @import "@/styles/_variables.scss";
   .card {
-    margin: 4%;
+    margin: 8% 0;
     height: auto;
     padding-bottom: 4%;
     box-shadow: 0 4px 8px 0 rgba(40, 40, 40, 0.2);
