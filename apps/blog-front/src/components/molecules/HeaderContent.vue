@@ -1,7 +1,7 @@
 <template>
   <div class="content-list">
     <a class="home" v-bind:class="{ active: isHome }" href="/">ホーム</a>
-    <!-- <a class="about" v-bind:class="{ active: isAbout }" href="/article">about</a> -->
+    <a class="about" v-bind:class="{ active: isAbout }" href="/about/4MpKUQwtphCr4Qvil1ub75">about</a>
     <a class="profile" v-bind:class="{ active: isProfile }" href="/profile">profile</a>
   </div>    
 </template>
@@ -24,7 +24,7 @@ export default {
       case 'home':
         this.isHome = true
         break
-      case 'article':
+      case 'about':
         this.isAbout = true
         break
       case 'profile':
