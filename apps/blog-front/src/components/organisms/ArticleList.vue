@@ -44,6 +44,7 @@ export default {
             }
             title
             description
+            category
             thumbnail {
               title
               fileName

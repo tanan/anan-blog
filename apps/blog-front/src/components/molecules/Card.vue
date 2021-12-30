@@ -7,6 +7,9 @@
         <div class="date">
           <p class="published-date">投稿日<time :datetime="show.sys.firstPublishedAt">{{ getDisplayDate(show.sys.firstPublishedAt) }}</time></p>
         </div>
+        <div class="category">
+          <div v-for="name in getCategories(show.category)" :key="name" class="name">#{{ name }}</div>
+        </div>
         <div class="description">{{ show.description }}</div>
       </div>
     </a>
@@ -26,6 +29,13 @@ export default {
     getDisplayDate (d) {
       let date = new Date(d)
       return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日"
+    },
+    getCategories (category) {
+      console.log(category)
+      if (!category) {
+        return null
+      }
+      return category.split(',')
     }
   }
 }
@@ -77,7 +87,7 @@ export default {
 
         .published-date {
           margin-top: 0px;
-          margin-bottom: 8px;
+          margin-bottom: 4px;
         }
 
         time {
@@ -88,6 +98,19 @@ export default {
       .description {
         font-size: 14px;
         max-width: 200px;
+        margin-top: 8px;
+      }
+
+      .category {
+        display: flex;
+
+        .name {
+          font-size: 0.8em;
+          margin-right: 6px;
+          padding: 4px 4px;
+          border: 1px solid $color-border-gray;
+          border-radius: 2px;
+        }
       }
 
       .editor {
