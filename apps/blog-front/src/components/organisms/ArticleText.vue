@@ -30,19 +30,19 @@ export default {
 
 <style lang="scss">
   .article {
-    width: 620px;
+    width: 58%;
     margin-left: auto;
     margin-right: auto;
 
     font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,ヒラギノ角ゴ ProN W3,Arial,メイリオ,Meiryo,sans-serif;
 
     h1 {
-      font-size: 32px;
+      font-size: 1.8em;
       margin-bottom: 4px;
     }
 
     .author {
-      font-size: 14px;
+      font-size: 0.8em;
 
       p {
         line-height: 12px;
@@ -65,12 +65,12 @@ export default {
 
     p {
       letter-spacing: 1px;
-      line-height: 36px;
+      line-height: 200%;
     }
 
     .thumbnail {
-      width: 640px;
-      height: 360px;
+      width: 100%;
+      height: auto;
       margin-top: 24px;
     }
 
@@ -81,12 +81,13 @@ export default {
         margin-top: 0px;
         margin-bottom: 0px;
         line-height: 24px;
+        font-size: 1em;
       }
     }
 
     pre {
       line-height: 20px;
-      font-size: 14px;
+      font-size: 0.9em;
       background-color: whitesmoke;
       padding: 16px;
       white-space: pre-wrap;
