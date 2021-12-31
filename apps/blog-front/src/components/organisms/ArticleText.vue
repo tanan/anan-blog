@@ -1,6 +1,8 @@
 <template>
   <div class="article">
-    <img class="thumbnail" :src="article.thumbnail" alt="thumbnail">
+    <div class="thumbnail">
+      <img :src="article.thumbnail" alt="thumbnail">
+    </div>
     <h1>{{ article.title }}</h1>
     <div class="author">
       <div class="date">
@@ -80,9 +82,12 @@ export default {
     }
 
     .thumbnail {
-      width: 100%;
       height: auto;
+      text-align: center;
       margin-top: 24px;
+      img {
+        width: 80%;
+      }
     }
 
     .category {
