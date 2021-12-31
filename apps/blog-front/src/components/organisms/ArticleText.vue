@@ -8,6 +8,9 @@
         <p class="updated-date">更新日<time :datetime="article.publishedAt">{{ getDisplayDate(article.firstPublishedAt) }}</time></p>
       </div>
     </div>
+    <div class="category">
+      <div v-for="name in getCategories(article.category)" :key="name" class="name">#{{ name }}</div>
+    </div>
     <p>{{ article.description }}</p>
     <p v-html="article.content"></p>
   </div>
@@ -23,12 +26,20 @@ export default {
     getDisplayDate (d) {
       let date = new Date(d)
       return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日"
+    },
+    getCategories (category) {
+      console.log(category)
+      if (!category) {
+        return null
+      }
+      return category.split(',')
     }
   },
 }
 </script>
 
 <style lang="scss">
+@import "@/styles/_variables.scss";
   .article {
     width: 58%;
     margin-left: auto;
@@ -72,6 +83,18 @@ export default {
       width: 100%;
       height: auto;
       margin-top: 24px;
+    }
+
+    .category {
+      display: flex;
+
+      .name {
+        font-size: 0.8em;
+        margin-right: 6px;
+        padding: 4px 4px;
+        border: 1px solid $color-border-gray;
+        border-radius: 2px;
+      }
     }
 
     ul {

@@ -35,6 +35,7 @@ export default {
       publishedAt: item.sys.publishedAt,
       firstPublishedAt: item.sys.firstPublishedAt,
       description: item.description,
+      category: item.category,
       content: documentToHtmlString(item.content.json, options)
     }
   },
@@ -49,6 +50,7 @@ export default {
           }
           title
           description
+          category
           thumbnail {
             title
             url
