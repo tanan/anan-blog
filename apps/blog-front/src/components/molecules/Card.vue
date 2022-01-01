@@ -46,7 +46,7 @@ export default {
   .card {
     margin: 4% 0;
     height: auto;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
     box-shadow: 0 4px 8px 0 rgba(40, 40, 40, 0.2);
 
     &:hover {
@@ -78,6 +78,7 @@ export default {
         font-size: 16px;
         font-weight: 600;
         margin-bottom: 8px;
+        max-width: 200px;
       }
 
       .date {
