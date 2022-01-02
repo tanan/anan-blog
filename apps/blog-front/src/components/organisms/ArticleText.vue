@@ -102,6 +102,11 @@ export default {
       }
     }
 
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     ul {
       p {
         width: 80%;
