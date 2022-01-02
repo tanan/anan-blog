@@ -28,7 +28,7 @@ export default {
     },
     getDisplayDate (d) {
       let date = new Date(d)
-      return date.getFullYear() + "年" + date.getMonth() + "月" + date.getDate() + "日"
+      return date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日"
     },
     getCategories (category) {
       console.log(category)
