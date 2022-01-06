@@ -5,7 +5,7 @@
       <div class="card-container">
         <div class="title">{{ show.title }}</div>
         <div class="date">
-          <p class="published-date">投稿日<time :datetime="show.sys.firstPublishedAt">{{ getDisplayDate(show.sys.firstPublishedAt) }}</time></p>
+          <p class="published-date">更新日<time :datetime="show.sys.publishedAt">{{ getDisplayDate(show.sys.publishedAt) }}</time></p>
         </div>
         <div class="category">
           <div v-for="name in getCategories(show.category)" :key="name" class="name">#{{ name }}</div>
