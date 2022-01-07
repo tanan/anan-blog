@@ -1,6 +1,6 @@
 <template>
   <div class="article-section">
-    <h2>新着記事</h2>
+    <h2>記事一覧</h2>
     <div class="card-list-container">
       <Card v-for="show in shows" :key="show.title" :show="show" />
     </div>
@@ -20,13 +20,13 @@ export default {
     };
   },
   mounted() {
-    var div = document.getElementsByClassName("card-list-container")
-    var card = document.createElement("div")
-    card.setAttribute("class", "card empty")
-    div[0].appendChild(card)
-    var card2 = document.createElement("div")
-    card2.setAttribute("class", "card empty")
-    div[0].appendChild(card2)
+    // var div = document.getElementsByClassName("card-list-container")
+    // var card = document.createElement("div")
+    // card.setAttribute("class", "card empty")
+    // div[0].appendChild(card)
+    // var card2 = document.createElement("div")
+    // card2.setAttribute("class", "card empty")
+    // div[0].appendChild(card2)
   },
   async created() {
    this.shows = await this.getShows();
