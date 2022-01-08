@@ -35,7 +35,7 @@ jobs:
           docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
-          gcloud auth configure-docker -q
+          gcloud auth configure-docker asia-northeast1-docker.pkg.dev
       # Push image to Google Container Registry
       - name: Build
         run: |-
