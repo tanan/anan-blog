@@ -12,7 +12,6 @@ jobs:
       HASH: $(git rev-parse --short "$GITHUB_SHA")
       SERVICE_NAME: blog/front
       PROJECT_ID: anan-project
-      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
 
     steps:
       - name: Checkout
@@ -21,9 +20,8 @@ jobs:
       # Setup gcloud CLI
       - uses: 'google-github-actions/auth@v0'
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: $PROJECT_ID
-
+          workload_identity_provider: projects/474794270878/locations/global/workloadIdentityPools/gh-pools/providers/gh-provider
+          service_account: github-actions@anan-project.iam.gserviceaccount.com
 
       # Build docker image
       - name: Image
