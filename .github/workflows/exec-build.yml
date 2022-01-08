@@ -27,10 +27,11 @@ jobs:
           service_account: github-actions@anan-project.iam.gserviceaccount.com
 
       # Build docker image
+      - name: Set Env
+        run: echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       - name: Image
         run: |-
-          echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          docker build --build-arg -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
+          docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
           gcloud auth configure-docker -q
