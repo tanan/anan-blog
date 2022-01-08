@@ -1,0 +1,37 @@
+name: Automated testing for pull request
+on: [push]
+env:
+  PROJECT_ID: anan-project
+  BUCKET_NAME: anan-gh-actions
+jobs:
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+
+    env:
+      HASH: $(git rev-parse --short "$GITHUB_SHA")
+      SERVICE_NAME: blog/front
+      PROJECT_ID: anan-project
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Setup gcloud CLI
+      - uses: google-github-actions/setup-gcloud@v0
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          project_id: $PROJECT_ID
+          export_default_credentials: true
+
+      # Build docker image
+      - name: Image
+        run: |-
+          docker build --build-arg -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$HASH .
+      # Configure docker to use the gcloud command-line tool as a credential helper
+      - run: |
+          gcloud auth configure-docker -q
+      # Push image to Google Container Registry
+      - name: Build
+        run: |-
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$HASH
