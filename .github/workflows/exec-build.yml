@@ -32,6 +32,8 @@ jobs:
       - name: Image
         run: |-
           cd ./apps/blog-front/
+          echo "VUE_APP_CONTENTFUL_SPACE_ID=${{ secrets.VUE_APP_CONTENTFUL_SPACE_ID }}" >> .env
+          echo "VUE_APP_CONTENTFUL_ACCESS_TOKEN=${{ secrets.VUE_APP_CONTENTFUL_ACCESS_TOKEN }}" >> .env
           docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
