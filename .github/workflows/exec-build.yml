@@ -31,6 +31,7 @@ jobs:
         run: echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       - name: Image
         run: |-
+          cd ./apps/blog-front/
           docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
