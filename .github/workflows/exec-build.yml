@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      HASH: $(git rev-parse --short "$GITHUB_SHA")
       SERVICE_NAME: blog/front
       PROJECT_ID: anan-project
     
@@ -30,11 +29,12 @@ jobs:
       # Build docker image
       - name: Image
         run: |-
-          docker build --build-arg -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$HASH .
+          echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          docker build --build-arg -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
           gcloud auth configure-docker -q
       # Push image to Google Container Registry
       - name: Build
         run: |-
-          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$HASH
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag
