@@ -12,6 +12,10 @@ jobs:
       HASH: $(git rev-parse --short "$GITHUB_SHA")
       SERVICE_NAME: blog/front
       PROJECT_ID: anan-project
+    
+    permissions:
+      contents: 'read'
+      id-token: 'write'
 
     steps:
       - name: Checkout
