@@ -35,4 +35,3 @@ jobs:
       - name: Build
         run: |-
           docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$HASH
-
