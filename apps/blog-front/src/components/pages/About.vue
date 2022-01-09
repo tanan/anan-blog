@@ -23,7 +23,6 @@ export default {
   },
   async created() {
     let item = await this.getArticle(this.$route.params.id);
-    console.log(item)
     const options = this.getRenderOptions(item.content.links)
     this.article = {
       title: item.title,
@@ -95,7 +94,6 @@ export default {
           }
         }
       }`
-      console.log(query)
       const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.VUE_APP_CONTENTFUL_SPACE_ID}`;
       const fetchOptions = {
         method: "POST",

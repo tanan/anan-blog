@@ -19,18 +19,8 @@ export default {
       shows: []
     };
   },
-  mounted() {
-    // var div = document.getElementsByClassName("card-list-container")
-    // var card = document.createElement("div")
-    // card.setAttribute("class", "card empty")
-    // div[0].appendChild(card)
-    // var card2 = document.createElement("div")
-    // card2.setAttribute("class", "card empty")
-    // div[0].appendChild(card2)
-  },
   async created() {
    this.shows = await this.getShows();
-   console.log(this.shows)
   },
   methods: {
     getShows: async () => {
@@ -95,13 +85,18 @@ export default {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+  }
 
-    .empty {
-      height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
+  .card-list-container::before{
+    content:"";
+    display: block;
+    width:23%;
+    order:1;
+  }
+
+  .card-list-container::after {
+    display: block;
+    content:"";
+    width: 23%;
   }
 </style>

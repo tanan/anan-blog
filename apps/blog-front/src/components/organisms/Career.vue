@@ -72,10 +72,7 @@ export default {
         },
       ]
     }
-  },
-  created() {
-    console.log(this.careers)
-  },
+  }
 }
 </script>
 

@@ -19,9 +19,6 @@ export default {
   },
   props: {
     page: String
-  },
-  created() {
-    console.log("path" + this.$route.path)
   }
 }
 </script>
