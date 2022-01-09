@@ -1,7 +1,7 @@
 # anan-blog
 for anan blog web site
 
-# 使い方
+# Usage
 `.env` ファイルをプロジェクトルートに配置する。
 
 ```
@@ -9,7 +9,11 @@ VUE_APP_CONTENTFUL_SPACE_ID=<space id>
 VUE_APP_CONTENTFUL_ACCESS_TOKEN=<token>
 ```
 
-# 構成
+# Overview
+
+![Overview](overview.png "overview")
+
+# Architecture
 
 ## Frontend
 
