@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="category">
-      <div v-for="name in getCategories(article.category)" :key="name" class="name">#{{ name }}</div>
+      <div v-for="name in article.category" :key="name" class="name">#{{ name }}</div>
     </div>
     <p>{{ article.description }}</p>
     <p v-html="article.content"></p>
@@ -28,13 +28,6 @@ export default {
     getDisplayDate (d) {
       let date = new Date(d)
       return date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日"
-    },
-    getCategories (category) {
-      console.log(category)
-      if (!category) {
-        return null
-      }
-      return category.split(',')
     }
   },
 }
