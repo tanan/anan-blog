@@ -8,7 +8,7 @@
 <script>
 import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleText from '@/components/organisms/ArticleText.vue'
-import { MARKS, BLOCKS } from '@contentful/rich-text-types';
+import { MARKS, BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 export default {
   name: 'Article',
