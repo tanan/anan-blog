@@ -8,7 +8,7 @@
 <script>
 import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleText from '@/components/organisms/ArticleText.vue'
-import { MARKS } from '@contentful/rich-text-types';
+import { MARKS, BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 export default {
   name: 'Article',
@@ -24,11 +24,7 @@ export default {
   async created() {
     let item = await this.getArticle(this.$route.params.id);
     console.log(item)
-    const options = {
-      renderMark: {
-        [MARKS.CODE]: text => `<pre>${text}</pre>`
-      }
-    }
+    const options = this.getRenderOptions(item.content.links)
     this.article = {
       title: item.title,
       thumbnail: item.thumbnail.url,
@@ -39,6 +35,22 @@ export default {
     }
   },
   methods: {
+    getRenderOptions(links) {
+      const assetMap = new Map()
+
+      for (const asset of links.assets.block) {
+        assetMap.set(asset.sys.id, asset)
+      }
+
+      return {
+        renderMark: {
+          [MARKS.CODE]: text => `<pre>${text}</pre>`
+        },
+        renderNode: {
+          [BLOCKS.EMBEDDED_ASSET]: (node) => `<img src=${assetMap.get(node.data.target.sys.id).url} alt=${assetMap.get(node.data.target.sys.id).fileName} />`
+        }
+      }
+    },
     getArticle: async (id) => {
       const query = `query {
         articles(id: "${id}") {
@@ -49,15 +61,40 @@ export default {
           }
           title
           description
+          category
           thumbnail {
             title
             url
           }
           content {
             json
+            links {
+              assets {
+                hyperlink {
+                  sys {
+                    id
+                  }
+                  contentType
+                  fileName
+                  width
+                  height
+                  url
+                }
+                block {
+                  sys {
+                    id
+                  }
+                  contentType
+                  fileName
+                  width
+                  height
+                  url
+                }
+              }
+            }
           }
         }
-      }`;
+      }`
       console.log(query)
       const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.VUE_APP_CONTENTFUL_SPACE_ID}`;
       const fetchOptions = {

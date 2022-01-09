@@ -48,12 +48,6 @@ export default {
         },
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node) => `<img src=${assetMap.get(node.data.target.sys.id).url} alt=${assetMap.get(node.data.target.sys.id).fileName} />`
-          // [BLOCKS.EMBEDDED_ASSET]: (node) => {
-          //   const asset = assetMap.get(node.data.target.sys.id);
-          //   return (
-          //     <img src={asset.url} alt={asset.fileName} />
-          //   );
-          // }
         }
       }
     },
