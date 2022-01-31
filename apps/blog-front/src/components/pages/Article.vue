@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import katex from 'katex'
 import MainHeader from '@/components/organisms/MainHeader.vue'
 import ArticleText from '@/components/organisms/ArticleText.vue'
 import RelatedArticleList from '@/components/organisms/RelatedArticleList.vue'
@@ -55,7 +56,14 @@ export default {
 
       return {
         renderMark: {
-          [MARKS.CODE]: text => `<pre>${text}</pre>`
+          [MARKS.CODE]: text => {
+            const doc = new DOMParser().parseFromString(text, 'text/html')
+            if (doc.documentElement.textContent.startsWith('\\')) {
+              console.log(katex.renderToString(doc.documentElement.textContent))
+              return `<pre>${katex.renderToString(doc.documentElement.textContent)}</pre>`
+            }
+            return `<pre>${text}</pre>`
+          }
         },
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node) => `<img src=${assetMap.get(node.data.target.sys.id).url} alt=${assetMap.get(node.data.target.sys.id).fileName} />`
