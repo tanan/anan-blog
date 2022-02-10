@@ -8,8 +8,8 @@ type UserHealth struct {
 }
 
 type HealthData struct {
-	date    string `json:"date"`
-	keydata string `json:"keydata"`
-	model   string `json:"model"`
-	tag     string `json:"tag"`
+	Date    string `json:"date"`
+	Keydata string `json:"keydata"`
+	Model   string `json:"model"`
+	Tag     string `json:"tag"`
 }

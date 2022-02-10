@@ -7,7 +7,7 @@ import (
 )
 
 type Config struct {
-	ContoroDB DBConfig `yaml:"contoro_database"`
+	HealthPlanetDB DBConfig `yaml:"health_planet_database"`
 }
 
 type DBConfig struct {
@@ -39,6 +39,6 @@ func LoadFile(path string) (*Config, error) {
 func (c *Config) LoadEnvPassword() {
 	p := os.Getenv("MYSQL_PASSWORD")
 	if p != "" {
-		c.ContoroDB.Password = p
+		c.HealthPlanetDB.Password = p
 	}
 }
