@@ -19,5 +19,5 @@ func main() {
 	}
 
 	con.LoadEnvPassword()
-	web.LoadRouter(con).Start(":10010")
+	web.LoadRouter(con).Start(":8001")
 }
