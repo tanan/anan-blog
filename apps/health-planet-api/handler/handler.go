@@ -1,19 +1,19 @@
 package handler
 
 import (
-	"health-planet-api/infra/database"
+	"health-planet-api/infrastracture/database"
 )
 
 type Handler struct {
-	contoroDBHandler ContoroDBHandler
+	healthPlanetDBHandler HealthPlanetDBHandler
 }
 
-func NewHandler(contoroDBInfo string) (*Handler, error) {
-	contoroDBHandler, err := database.NewSQLHandler(contoroDBInfo)
+func NewHandler(healthPlanetDBInfo string) (*Handler, error) {
+	healthPlanetDBHandler, err := database.NewSQLHandler(healthPlanetDBInfo)
 	if err != nil {
 		return nil, err
 	}
 	return &Handler{
-		contoroDBHandler: contoroDBHandler,
+		healthPlanetDBHandler: healthPlanetDBHandler,
 	}, nil
 }
