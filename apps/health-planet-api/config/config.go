@@ -7,7 +7,8 @@ import (
 )
 
 type Config struct {
-	HealthPlanetDB DBConfig `yaml:"health_planet_database"`
+	HealthPlanetDB  DBConfig        `yaml:"health_planet_database"`
+	HealthPlanetAPI HealthPlanetAPI `yaml:"health_planet_api"`
 }
 
 type DBConfig struct {
@@ -17,6 +18,10 @@ type DBConfig struct {
 	User     string `yaml:"user"`
 	Password string `yaml:"password"`
 	Timeout  int    `yaml:"timeout"`
+}
+
+type HealthPlanetAPI struct {
+	Code string
 }
 
 const (
@@ -40,5 +45,12 @@ func (c *Config) LoadEnvPassword() {
 	p := os.Getenv("MYSQL_PASSWORD")
 	if p != "" {
 		c.HealthPlanetDB.Password = p
+	}
+}
+
+func (c *Config) LoadEnvSecretCode() {
+	code := os.Getenv("HEALTH_PLANET_CODE")
+	if code != "" {
+		c.HealthPlanetAPI.Code = code
 	}
 }

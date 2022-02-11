@@ -19,5 +19,6 @@ func main() {
 	}
 
 	con.LoadEnvPassword()
+	con.LoadEnvSecretCode()
 	web.LoadRouter(con).Start(":8001")
 }
