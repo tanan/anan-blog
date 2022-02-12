@@ -18,7 +18,6 @@ func main() {
 		panic(err)
 	}
 
-	con.LoadEnvPassword()
 	con.LoadEnvHealthPlanet()
 	web.LoadRouter(con).Start(":8001")
 }
