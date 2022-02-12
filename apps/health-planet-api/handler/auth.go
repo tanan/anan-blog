@@ -12,7 +12,7 @@ func (h *Handler) GetAuth() (token string, refreshToken string, err error) {
 	header := map[string]string{"Content-Type": "application/x-www-form-urlencoded"}
 	statusCode, resp, err := h.Client.Post(url, header, body)
 	if statusCode != http.StatusOK || err != nil {
-		return "", err
+		return "", "", err
 	}
 	var authResponse AuthResponse
 	json.Unmarshal(resp, &authResponse)

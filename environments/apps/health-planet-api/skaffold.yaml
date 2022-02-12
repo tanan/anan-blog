@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta21
+kind: Config
+metadata:
+  name: health-planet-api
+build:
+  artifacts:
+  - image: asia-northeast1-docker.pkg.dev/anan-project/blog/health-planet-api
+    context: ../../../apps/health-planet-api
+    docker:
+      dockerfile: ./Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+profiles:
+- name: ci
+  build:
+    tagPolicy:
+      envTemplate:
+        template: '{{ .REVISION }}'
+    local:
+      push: true
+      useBuildkit: true

@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SERVICE_NAME: blog/front
+      FRONT_SERVICE_NAME: blog/front
+      API_SERVICE_NAME: blog/health-planet-api
       PROJECT_ID: anan-project
     
     permissions:
@@ -29,16 +30,23 @@ jobs:
       # Build docker image
       - name: Set Env
         run: echo "tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - name: Image
+      - name: Image Front
         run: |-
           cd ./apps/blog-front/
           echo "VUE_APP_CONTENTFUL_SPACE_ID=${{ secrets.VUE_APP_CONTENTFUL_SPACE_ID }}" >> .env
           echo "VUE_APP_CONTENTFUL_ACCESS_TOKEN=${{ secrets.VUE_APP_CONTENTFUL_ACCESS_TOKEN }}" >> .env
-          docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag .
+          docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$FRONT_SERVICE_NAME:$tag .
+      - name: Image API
+        run: |-
+          cd ./apps/health-planet-api/
+          docker build -t asia-northeast1-docker.pkg.dev/$PROJECT_ID/$API_SERVICE_NAME:$tag .
       # Configure docker to use the gcloud command-line tool as a credential helper
       - run: |
           gcloud auth configure-docker asia-northeast1-docker.pkg.dev
       # Push image to Google Container Registry
-      - name: Build
+      - name: Push Front
         run: |-
-          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$SERVICE_NAME:$tag
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$FRONT_SERVICE_NAME:$tag
+      - name: Push API
+        run: |-
+          docker push asia-northeast1-docker.pkg.dev/$PROJECT_ID/$API_SERVICE_NAME:$tag
