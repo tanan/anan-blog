@@ -12,10 +12,9 @@ func (h Handler) Me(ctx Context) error {
 	if statusCode != http.StatusOK || err != nil {
 		return ctx.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
 	}
-	fmt.Println(string(resp))
 	var scanResponse ScanResponse
 	json.Unmarshal(resp, &scanResponse)
-	return ctx.JSON(http.StatusOK, scanResponse)
+	return ctx.JSON(http.StatusOK, scanResponse.Data)
 }
 
 type ScanResponse struct {
