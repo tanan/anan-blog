@@ -8,6 +8,8 @@ import (
 	"net/http"
 )
 
+var han *handler.Handler
+
 func LoadRouter(con *config.Config) *echo.Echo {
 	e := echo.New()
 
@@ -19,18 +21,29 @@ func LoadRouter(con *config.Config) *echo.Echo {
 		AllowHeaders: []string{"*"},
 	}))
 
-	h, err := handler.NewHandler(con.HealthPlanetDB.GetConnInfo())
-	if err != nil {
-		panic(err)
-	}
-	//defer conn.Close()
+	han, _ = handler.NewHandler(con, NewClient(5))
 
 	e.GET("/systems/ping", ping)
 	v1 := e.Group("v1")
-	v1.GET("/me", func(ctx echo.Context) error { return h.Me(ctx) })
+	v1.Use(auth)
+	v1.GET("/me", func(ctx echo.Context) error { return han.Me(ctx) })
 	return e
 }
 
 func ping(c echo.Context) error {
 	return c.String(http.StatusOK, "OK")
+}
+
+func auth(next echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		token, err := han.GetAuth()
+		if err != nil {
+			c.Error(err)
+		}
+		han.APIConfig.AccessToken = token
+		if err := next(c); err != nil {
+			c.Error(err)
+		}
+		return nil
+	}
 }

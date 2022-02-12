@@ -1,15 +1,22 @@
 package handler
 
-type Handler struct {
-	healthPlanetDBHandler HealthPlanetDBHandler
+import (
+	"health-planet-api/config"
+)
+
+type Client interface {
+	Get(url string, header map[string]string) (code int, respBody []byte, err error)
+	Post(url string, header map[string]string, body []byte) (code int, respBody []byte, err error)
 }
 
-func NewHandler(healthPlanetDBInfo string) (*Handler, error) {
-	//healthPlanetDBHandler, err := database.NewSQLHandler(healthPlanetDBInfo)
-	//if err != nil {
-	//	return nil, err
-	//}
+type Handler struct {
+	APIConfig *config.HealthPlanetAPI
+	Client    Client
+}
+
+func NewHandler(con *config.Config, client Client) (*Handler, error) {
 	return &Handler{
-		//healthPlanetDBHandler: healthPlanetDBHandler,
+		APIConfig: &con.HealthPlanetAPI,
+		Client:    client,
 	}, nil
 }

@@ -21,8 +21,10 @@ type DBConfig struct {
 }
 
 type HealthPlanetAPI struct {
-	Code   string
-	Secret string
+	Id           string
+	Secret       string
+	AccessToken  string
+	RefreshToken string
 }
 
 const (
@@ -50,11 +52,15 @@ func (c *Config) LoadEnvPassword() {
 }
 
 func (c *Config) LoadEnvHealthPlanet() {
-	code := os.Getenv("HEALTH_PLANET_CODE")
-	if code != "" {
-		c.HealthPlanetAPI.Code = code
+	id := os.Getenv("HEALTH_PLANET_ID")
+	if id != "" {
+		c.HealthPlanetAPI.Id = id
 	}
-	secret := os.Getenv("HEALTH_PLANET_CLIENT_SECRET")
+	refreshToken := os.Getenv("HEALTH_PLANET_REFRESH_TOKEN")
+	if refreshToken != "" {
+		c.HealthPlanetAPI.RefreshToken = refreshToken
+	}
+	secret := os.Getenv("HEALTH_PLANET_SECRET")
 	if secret != "" {
 		c.HealthPlanetAPI.Secret = secret
 	}
