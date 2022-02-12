@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func (h *Handler) GetAuth() (token string, err error) {
+func (h *Handler) GetAuth() (token string, refreshToken string, err error) {
 	redirectUri := "https://www.healthplanet.jp/success.html"
 	body := []byte("client_id=" + h.APIConfig.Id + "&client_secret=" + h.APIConfig.Secret + "&redirect_uri=" + redirectUri + "&refresh_token=" + h.APIConfig.RefreshToken + "&grant_type=refresh_token")
 	url := "https://www.healthplanet.jp/oauth/token"
@@ -16,7 +16,7 @@ func (h *Handler) GetAuth() (token string, err error) {
 	}
 	var authResponse AuthResponse
 	json.Unmarshal(resp, &authResponse)
-	return authResponse.AccessToken, nil
+	return authResponse.AccessToken, authResponse.RefreshToken, nil
 }
 
 type AuthResponse struct {

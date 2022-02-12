@@ -36,11 +36,12 @@ func ping(c echo.Context) error {
 
 func auth(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		token, err := han.GetAuth()
+		token, refreshToken, err := han.GetAuth()
 		if err != nil {
 			c.Error(err)
 		}
 		han.APIConfig.AccessToken = token
+		han.APIConfig.RefreshToken = refreshToken
 		if err := next(c); err != nil {
 			c.Error(err)
 		}
