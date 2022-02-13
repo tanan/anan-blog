@@ -7,7 +7,7 @@ import (
 )
 
 func (h Handler) Me(ctx Context) error {
-	url := fmt.Sprintf("https://www.healthplanet.jp/status/innerscan.json?access_token=%s&tag=6021,6022&date=1&from=20211201000000&to=20220207000000", h.APIConfig.AccessToken)
+	url := fmt.Sprintf("https://www.healthplanet.jp/status/innerscan.json?access_token=%s&tag=6021,6022&date=1", h.APIConfig.AccessToken)
 	statusCode, resp, err := h.Client.Get(url, nil)
 	if statusCode != http.StatusOK || err != nil {
 		return ctx.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
