@@ -3,6 +3,7 @@
     <a class="home" v-bind:class="{ active: isHome }" href="/">ホーム</a>
     <a class="about" v-bind:class="{ active: isAbout }" href="/about/4MpKUQwtphCr4Qvil1ub75">about</a>
     <a class="profile" v-bind:class="{ active: isProfile }" href="/profile">profile</a>
+    <a class="health-care" v-bind:class="{ active: isHealthCare }" href="/health-care">health care</a>
   </div>    
 </template>
 
@@ -16,7 +17,8 @@ export default {
     return {
       isHome: false,
       isAbout: false,
-      isProfile: false
+      isProfile: false,
+      isHealthCare: false,
     }
   },
   created() {
@@ -29,6 +31,9 @@ export default {
         break
       case 'profile':
         this.isProfile = true
+        break
+      case 'health-care':
+        this.isHealthCare = true
         break
       default:
     }
