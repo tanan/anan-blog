@@ -59,7 +59,6 @@ export default {
           [MARKS.CODE]: text => {
             const doc = new DOMParser().parseFromString(text, 'text/html')
             if (doc.documentElement.textContent.startsWith('\\')) {
-              console.log(katex.renderToString(doc.documentElement.textContent))
               return `<pre>${katex.renderToString(doc.documentElement.textContent)}</pre>`
             }
             return `<pre>${text}</pre>`

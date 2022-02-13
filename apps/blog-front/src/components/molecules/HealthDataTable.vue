@@ -8,7 +8,7 @@
         </thead>
         <tbody>
           <tr v-for="(k, index) in Object.keys(body)" :key="index">
-            <td>{{ k }}</td>
+            <td>{{ getDisplayDate(k) }}</td>
             <td>{{ body[k].weight }}Kg</td>
             <td>{{ body[k].fat }}%</td>
           </tr>
@@ -22,6 +22,16 @@ export default {
   name: 'HealthDataTable',
   props: {
     body: Object
+  },
+  methods: {
+    getDisplayDate(v) {
+      let year = v.substring(0, 4)
+      let month = v.substring(4, 6)
+      let day = v.substring(6, 8)
+      let hour = v.substring(8, 10)
+      let minutes = v.substring(10, 12)
+      return year + "-" + month + "-" + day + " " + hour + ":" + minutes
+    }
   }
 }
 </script>

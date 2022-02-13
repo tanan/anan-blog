@@ -34,7 +34,6 @@ export default {
       }
       body[v.date] = d
     });
-    console.log(body)
     this.body = body
   },
   methods: {
