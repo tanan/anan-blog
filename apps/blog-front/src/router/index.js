@@ -3,6 +3,7 @@ import Home from '../components/pages/Home.vue'
 import Article from '../components/pages/Article.vue'
 import About from '../components/pages/About.vue'
 import Profile from '../components/pages/Profile.vue'
+import HealthCare from '../components/pages/HealthCare.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+  {
+    path: '/health-care',
+    name: 'HealthCare',
+    component: HealthCare
   }
 ]
 
